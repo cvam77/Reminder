@@ -67,7 +67,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         }
         else
         {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorAccent));
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
         }
 
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
