@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         style="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#ffffff"
         android:text="Set D-Date"
-        android:fontFamily="serif"
+        android:fontFamily="sans-serif"
         android:textSize="18sp"
         />
 
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
         android:text="Set D-Time"
-        android:fontFamily="serif"
+        android:fontFamily="sans-serif"
         android:textSize="18sp"
         />
 

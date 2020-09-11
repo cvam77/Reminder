@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
         mFabShuffleDates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                nearestToTodaySelector();
             }
         });
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
     }
 
-    private void setUpViewModel(final boolean goalDeleted)
+    public void setUpViewModel(final boolean goalDeleted)
     {
         ViewModelForMainActivity viewModel = ViewModelProviders.of(this).get(ViewModelForMainActivity.class);
         viewModel.getGoalList().observe(this, new Observer<List<EachGoal>>() {
@@ -142,17 +142,15 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        nearestToTodaySelector();
-    }
-
     public void shuffleDates()
     {
         dateShuffler.shuffleDates(getApplicationContext());
     }
 
+    public void callViewModel()
+    {
+        setUpViewModel(false);
+    }
     public static void makeNotification(Context mContext)
     {
         if(GoalListForShuffling != null)
@@ -198,7 +196,9 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
                                     notificationGoal.setId(individualAim.getId());
                                     mAimDatabase.aimDao().updateGoal(notificationGoal);
                                 }
+
                             });
+
 
                         }
                     }
@@ -239,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
                 for (int i = 0; i < GoalListForShuffling.size(); i++) {
 
                     final EachGoal individualAim = (EachGoal) GoalListForShuffling.get(i);
+
 
                     Calendar calendarForEachAim = Calendar.getInstance();
                     calendarForEachAim.setTime(individualAim.getVirtualDeadlineDate());

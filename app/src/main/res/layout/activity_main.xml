@@ -64,7 +64,6 @@
             android:tint="@android:color/black"
             app:srcCompat="@android:drawable/stat_notify_sync"
             app:backgroundTint="#FAFAFA"
-            android:visibility="gone"
             />
 
     </FrameLayout>

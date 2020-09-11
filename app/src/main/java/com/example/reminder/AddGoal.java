@@ -1,5 +1,6 @@
 package com.example.reminder;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
@@ -77,6 +78,8 @@ public class AddGoal extends AppCompatActivity implements DatePickerDialog.OnDat
     boolean notificationShownForThisAim=false;
     boolean notificationAlarm = false;
 
+    MainActivity mainActivity = new MainActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +111,7 @@ public class AddGoal extends AppCompatActivity implements DatePickerDialog.OnDat
 
                 viewModel.getIndividualGoal().observe(this, new Observer<EachGoal>() {
                     @Override
-                    public void onChanged(EachGoal eachGoal) {
+                    public void onChanged(@Nullable EachGoal eachGoal) {
                         viewModel.getIndividualGoal().removeObserver(this);
                         loadGoalAndFillViews(eachGoal);
                     }
@@ -345,25 +348,25 @@ public class AddGoal extends AppCompatActivity implements DatePickerDialog.OnDat
         final boolean allowVD = isSwitchChecked;
 
 
+        final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalOriginalDeadline,eachGoalVirtualDeadline,allowVD,
+                isVdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim, notificationAlarm);
 
         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 if(mGoalId == DEFAULT_GOAL_ID)
                 {
-                    EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalOriginalDeadline,eachGoalVirtualDeadline,allowVD,
-                            isVdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim, notificationAlarm);
                     mAimDatabase.aimDao().insertGoal(eachGoal);
                 }
                 else
                 {
-                    EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalOriginalDeadline,eachGoalVirtualDeadline,allowVD,
-                            isVdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim, notificationAlarm);
                     eachGoal.setId(mGoalId);
                     mAimDatabase.aimDao().updateGoal(eachGoal);
+                    Log.d("awesomeness",eachGoal.getGoalName());
                 }
                 finish();
             }
+
         });
     }
 
