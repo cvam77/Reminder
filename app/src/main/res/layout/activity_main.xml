@@ -56,14 +56,14 @@
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabShuffleDates"
+            android:id="@+id/fabRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_margin="16dp"
             android:tint="@android:color/black"
             app:srcCompat="@android:drawable/stat_notify_sync"
-            app:backgroundTint="#FAFAFA"
+            app:backgroundTint="#757575"
             />
 
     </FrameLayout>

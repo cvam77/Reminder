@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
     private GoalAdapter mGoalAdapter;
     private static AimDatabase mAimDatabase;
     FloatingActionButton mFabAddGoal;
-    private FloatingActionButton mFabShuffleDates;
+    private FloatingActionButton mFabRefresh;
 
 
     private static List<EachGoal> GoalListForShuffling;
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
             }
         });
 
-        mFabShuffleDates = findViewById(R.id.fabShuffleDates);
-        mFabShuffleDates.setOnClickListener(new View.OnClickListener() {
+        mFabRefresh = findViewById(R.id.fabRefresh);
+        mFabRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nearestToTodaySelector();
@@ -147,10 +147,6 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
         dateShuffler.shuffleDates(getApplicationContext());
     }
 
-    public void callViewModel()
-    {
-        setUpViewModel(false);
-    }
     public static void makeNotification(Context mContext)
     {
         if(GoalListForShuffling != null)
@@ -184,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                             Log.d("avengers", "showing notification for " + individualAim.getGoalName());
 
-                            Notification.notificationCreator(mContext,individualAim,"Upcoming Aim Reminder");
+                            Notification.notificationCreator(mContext,individualAim,"Less than " + differenceHours + " hours left for");
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
@@ -203,13 +199,13 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
                         }
                     }
 
-                    else if(differenceHours >= 0 && differenceHours <= 5)
+                    else if(differenceHours >= 0 && differenceHours <= 4)
                     {
                         if(!individualAim.isNotificationAlarm())
                         {
                             Log.d("avengers", "showing alarm for " + individualAim.getGoalName());
 
-                            Notification.notificationCreator(mContext,individualAim, "Time's Almost Up For");
+                            Notification.notificationCreator(mContext,individualAim, "Less than " + differenceHours + " hours left for");
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),

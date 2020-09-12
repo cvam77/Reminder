@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface AimDao
 {
-    @Query("SELECT * FROM aim ORDER BY originalDeadlineDate")
+    @Query("SELECT * FROM aim ORDER BY virtualDeadlineDate")
     LiveData<List<EachGoal>> loadAllGoals();
 
     @Insert

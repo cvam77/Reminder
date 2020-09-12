@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AimFirebaseJobDispatcher
 {
-    private static final int INTERVAL_MINUTES = 120;
+    private static final int INTERVAL_MINUTES = 60;
 
     private static final int INTERVAL_IN_SECONDS = (int) (TimeUnit.MINUTES.toSeconds(INTERVAL_MINUTES));
 
@@ -42,7 +42,7 @@ public class AimFirebaseJobDispatcher
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
                 .setTrigger(Trigger.executionWindow(INTERVAL_IN_SECONDS,INTERVAL_WIDTH))
-                .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(true)
                 .build();
 

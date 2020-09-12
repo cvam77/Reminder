@@ -19,7 +19,7 @@
         style="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#ffffff"
         android:text="Set D-Date"
-        android:fontFamily="sans-serif"
+        android:fontFamily="serif"
         android:textSize="18sp"
         />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
         android:text="Set D-Time"
-        android:fontFamily="sans-serif"
+        android:fontFamily="serif"
         android:textSize="18sp"
         />
 
@@ -42,8 +42,8 @@
         android:textColor="#ffffff"
         tools:text="My Goal!"
         android:layout_marginLeft="50dp"
-        android:layout_marginVertical="5dp"
-        android:fontFamily="sans-serif"
+        android:layout_marginVertical="2dp"
+        android:fontFamily="serif"
         android:textSize="20sp"
         />
 
