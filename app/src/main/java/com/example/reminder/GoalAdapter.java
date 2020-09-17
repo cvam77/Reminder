@@ -70,17 +70,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
         }
 
-        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        if(position % 2 == 0)
-        {
-            params.setMargins(30,15,145,15);
-        }
-        else if(position % 2 == 1)
-        {
-            params.setMargins(145,15,30,15);
-        }
-
-        holder.itemView.setLayoutParams(params);
         holder.mTvGoalDetail.setText(goalDetail);
         holder.mTvDeadlineDate.setText(deadlineDateString);
         holder.mTvDeadlineTime.setText(deadlineTimeString);
