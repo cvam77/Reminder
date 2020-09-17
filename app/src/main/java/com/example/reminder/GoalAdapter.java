@@ -63,11 +63,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         if(eachGoal.isNearestToTodayDate())
         {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.accent));
+            holder.itemView.setBackground(mContext.getResources().getDrawable(R.drawable.nearestday_round_corners));
         }
         else
         {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+            holder.itemView.setBackground(mContext.getResources().getDrawable(R.drawable.round_corners));
         }
 
         holder.mTvGoalDetail.setText(goalDetail);
