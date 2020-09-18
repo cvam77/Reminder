@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -24,6 +23,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
     private Context mContext;
     private List<EachGoal> mGoalList;
     final private ItemClickListener mItemClickListener;
+
 
     public GoalAdapter(Context mContext, ItemClickListener listener)
     {

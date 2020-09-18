@@ -52,7 +52,7 @@
             android:layout_margin="16dp"
             android:tint="@android:color/black"
             app:srcCompat="@android:drawable/ic_input_add"
-            app:backgroundTint="#757575"
+            app:backgroundTint="#FEDBD0"
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
