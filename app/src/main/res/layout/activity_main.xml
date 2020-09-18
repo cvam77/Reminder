@@ -10,9 +10,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
+        android:background="@drawable/top_part_round"
+        android:layout_marginBottom="10dp"
         >
 
         <TextView
@@ -32,7 +34,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
 
         <!-- RecyclerView that is responsible for holding a listtaskEntrytask data -->
         <androidx.recyclerview.widget.RecyclerView
@@ -52,7 +55,7 @@
             android:layout_margin="16dp"
             android:tint="@android:color/black"
             app:srcCompat="@android:drawable/ic_input_add"
-            app:backgroundTint="#FEDBD0"
+            app:backgroundTint="#A1887F"
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
