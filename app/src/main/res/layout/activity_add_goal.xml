@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#424242"
+    android:background="#9FC2BA"
     >
 
     <EditText
@@ -92,7 +92,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvVirtualDeadline"
             android:text="&quot;Virtual Deadline Enabled&quot;"
-            android:textColor="#FFFFFF"
             android:textStyle="italic"
             android:textSize="17sp"
             android:layout_marginLeft="50dp"

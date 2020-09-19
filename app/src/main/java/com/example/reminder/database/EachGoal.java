@@ -18,8 +18,10 @@ public class EachGoal
     private boolean nearestToTodayDate;
     private boolean notificationShown;
     private boolean notificationAlarm;
+    private boolean pastDate;
 
-    public EachGoal(int id, String goalName, Date originalDeadlineDate, Date virtualDeadlineDate, boolean allowVD, boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm) {
+    public EachGoal(int id, String goalName, Date originalDeadlineDate, Date virtualDeadlineDate, boolean allowVD,
+                    boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate) {
         this.id = id;
         this.goalName = goalName;
         this.originalDeadlineDate = originalDeadlineDate;
@@ -29,10 +31,12 @@ public class EachGoal
         this.nearestToTodayDate = nearestToTodayDate;
         this.notificationShown = notificationShown;
         this.notificationAlarm = notificationAlarm;
+        this.pastDate = pastDate;
     }
 
     @Ignore
-    public EachGoal(String goalName, Date originalDeadlineDate, Date virtualDeadlineDate, boolean allowVD, boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm) {
+    public EachGoal(String goalName, Date originalDeadlineDate, Date virtualDeadlineDate,
+                    boolean allowVD, boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate) {
         this.goalName = goalName;
         this.originalDeadlineDate = originalDeadlineDate;
         this.virtualDeadlineDate = virtualDeadlineDate;
@@ -41,6 +45,7 @@ public class EachGoal
         this.nearestToTodayDate = nearestToTodayDate;
         this.notificationShown = notificationShown;
         this.notificationAlarm = notificationAlarm;
+        this.pastDate = pastDate;
     }
 
     public int getId() {
@@ -113,5 +118,13 @@ public class EachGoal
 
     public void setNotificationAlarm(boolean notificationAlarm) {
         this.notificationAlarm = notificationAlarm;
+    }
+
+    public boolean isPastDate() {
+        return pastDate;
+    }
+
+    public void setPastDate(boolean pastDate) {
+        this.pastDate = pastDate;
     }
 }

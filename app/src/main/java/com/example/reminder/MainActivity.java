@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                                    individualAim.isNearestToTodayDate(),true,individualAim.isNotificationAlarm());
+                                    individualAim.isNearestToTodayDate(),true,individualAim.isNotificationAlarm(),individualAim.isPastDate());
 
                             GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                                 @Override
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                                    individualAim.isNearestToTodayDate(),individualAim.isNotificationShown(),true);
+                                    individualAim.isNearestToTodayDate(),individualAim.isNotificationShown(),true,individualAim.isPastDate());
 
                             GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                                 @Override
@@ -247,19 +247,27 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
                     int differenceHours = (int) TimeUnit.HOURS.convert(calendarForEachAim.getTimeInMillis()-todayCalendarDefault.getTimeInMillis(),TimeUnit.MILLISECONDS);
 
                     boolean nearestToToday = false;
+                    boolean pastDate = false;
 
-                    if(differenceHours <= 24 && differenceHours >= 0)
-                    {
-                        nearestToToday = true;
-                    }
-                    else
+                    if(differenceHours < 0)
                     {
                         nearestToToday = false;
+                        pastDate = true;
+                    }
+                    else if(differenceHours >=0 && differenceHours <= 24)
+                    {
+                        nearestToToday = true;
+                        pastDate = false;
+                    }
+                    else if(differenceHours > 24)
+                    {
+                        nearestToToday = false;
+                        pastDate = false;
                     }
 
                     final EachGoal alarmGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                             individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                            nearestToToday,individualAim.isNotificationShown(),individualAim.isNotificationAlarm());
+                            nearestToToday,individualAim.isNotificationShown(),individualAim.isNotificationAlarm(),pastDate);
 
                     GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                         @Override

@@ -89,7 +89,8 @@ public class DateShuffler
                             eachGoalVirtualDeadlineDate = virtualDate;
 
                             vdCreatedForThisAim = true;
-                            final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim);
+                            final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,
+                                    isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim,eachAim.isPastDate());
 
                             GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                                 @Override
@@ -119,7 +120,8 @@ public class DateShuffler
                             eachGoalVirtualDeadlineDate = virtualDate;
                         }
                         vdCreatedForThisAim = true;
-                        final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim);
+                        final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,
+                                vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim,eachAim.isPastDate());
 
                         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                             @Override
@@ -150,7 +152,8 @@ public class DateShuffler
                         Log.d("holmes","eachGoalVirtualDeadlineDate = " + eachGoalVirtualDeadlineDate);
 
                         vdCreatedForThisAim = true;
-                        final EachGoal eachAimForCaseThree = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim);
+                        final EachGoal eachAimForCaseThree = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,
+                                vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim,eachAim.isPastDate());
 
                         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                             @Override
@@ -171,7 +174,8 @@ public class DateShuffler
                         eachGoalVirtualDeadlineDate = calendarForFourDays.getTime();
 
                         vdCreatedForThisAim = true;
-                        final EachGoal eachAimForCaseFour = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim);
+                        final EachGoal eachAimForCaseFour = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,
+                                vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim,eachAim.isPastDate());
 
                         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                             @Override
@@ -212,7 +216,8 @@ public class DateShuffler
                         }
 
                         vdCreatedForThisAim = true;
-                        final EachGoal eachAimForCaseDefault = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim);
+                        final EachGoal eachAimForCaseDefault = new EachGoal(eachGoalName,eachGoalDeadlineDate,eachGoalVirtualDeadlineDate,allowVD,
+                                vdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim,notificationAlarmShownForThisAim,eachAim.isPastDate());
 
                         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                             @Override
