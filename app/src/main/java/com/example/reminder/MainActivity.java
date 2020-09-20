@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
                         }
                     }
 
-                    else if(differenceHours >= 0 && differenceHours <= 4)
+                    else if(differenceHours >= 0 && differenceHours <= 2)
                     {
                         if(!individualAim.isNotificationAlarm())
                         {
