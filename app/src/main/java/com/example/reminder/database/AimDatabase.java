@@ -12,7 +12,7 @@ import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {EachGoal.class}, version = 6, exportSchema = false)
+@Database(entities = {EachGoal.class}, version = 7, exportSchema = false)
 @TypeConverters(DateHandler.class)
 public abstract class AimDatabase extends RoomDatabase
 {
@@ -56,6 +56,13 @@ public abstract class AimDatabase extends RoomDatabase
         }
     };
 
+    static Migration migrationSixToSeven = new Migration(6,7) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE 'aim' ADD COLUMN 'taskDone' INTEGER NOT NULL DEFAULT 0");
+        }
+    };
+
     public static AimDatabase getInstance(Context context)
     {
         if(sInstance == null)
@@ -66,7 +73,7 @@ public abstract class AimDatabase extends RoomDatabase
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AimDatabase.class, AimDatabase.DB_NAME)
                         .addMigrations(migrationOneToTwo,migrationTwoToThree,migrationThreeToFour,migrationFourToFive,
-                                migrationFiveToSix)
+                                migrationFiveToSix,migrationSixToSeven)
                         .build();
             }
 

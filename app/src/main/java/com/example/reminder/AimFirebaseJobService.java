@@ -21,6 +21,7 @@ public class AimFirebaseJobService extends JobService
             protected Object doInBackground(Object[] objects) {
                 DateShuffler.shuffleDates(serviceContext);
                 mainActivity.makeNotification(serviceContext);
+                mainActivity.setCurrentDate();
                 return null;
             }
 

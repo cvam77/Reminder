@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.reminder.database.AimDatabase;
@@ -20,7 +21,9 @@ import com.example.reminder.database.EachGoal;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
     private static List<EachGoal> GoalListForShuffling;
 
     TextView mTvDeadlineTime;
+    static TextView mTodayDate;
 
     DateShuffler dateShuffler;
 
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
     private TreeMap<Integer,Integer> treeMap = new TreeMap<Integer, Integer>();
 
     private boolean goalDeletedUniversal = false;
+
+    CheckBox mCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -57,12 +63,46 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
         mTvDeadlineTime = findViewById(R.id.tvDeadlineTime);
         mRecyclerView = findViewById(R.id.rvGoals);
+        mTodayDate = findViewById(R.id.today_date_tv);
+        mCheckBox = findViewById(R.id.checkbox);
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
 
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mGoalAdapter = new GoalAdapter(this,this);
+        OnItemClickIndividual.checkBoxClickCallback checkBoxClicked = new OnItemClickIndividual.checkBoxClickCallback() {
+            @Override
+            public void onItemClicked(View view, int position) {
+                switch(view.getId())
+                {
+                    case R.id.checkbox:
+                        if(GoalListForShuffling != null) {
+                            if (GoalListForShuffling.size() > 0) {
+                                final EachGoal individualAim = GoalListForShuffling.get(position);
+                                boolean taskDone = individualAim.isTaskDone();
+
+                                final EachGoal goal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
+                                        individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
+                                        individualAim.isNearestToTodayDate(),true,individualAim.isNotificationAlarm(),individualAim.isPastDate(),!taskDone);
+
+                                GoalExecutor.getInstance().diskIO().execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        goal.setId(individualAim.getId());
+                                        mAimDatabase.aimDao().updateGoal(goal);
+                                    }
+
+                                });
+
+                            }
+                        }
+                        break;
+
+                }
+            }
+        };
+
+        mGoalAdapter = new GoalAdapter(this,this,checkBoxClicked);
 
         dateShuffler = new DateShuffler();
 
@@ -116,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
         AimFirebaseJobDispatcher.scheduleJob(mContext);
 
 
+
     }
 
     public void setUpViewModel(final boolean goalDeleted)
@@ -147,6 +188,12 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
         dateShuffler.shuffleDates(getApplicationContext());
     }
 
+    public static void setCurrentDate()
+    {
+        Date date = new Date(System.currentTimeMillis());
+        String deadlineDateString = DateFormat.getDateInstance(DateFormat.FULL).format(date);
+        mTodayDate.setText(deadlineDateString);
+    }
     public static void makeNotification(Context mContext)
     {
         if(GoalListForShuffling != null)
@@ -184,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                                    individualAim.isNearestToTodayDate(),true,individualAim.isNotificationAlarm(),individualAim.isPastDate());
+                                    individualAim.isNearestToTodayDate(),true,individualAim.isNotificationAlarm(),individualAim.isPastDate(),individualAim.isTaskDone());
 
                             GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                                 @Override
@@ -209,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                             final EachGoal notificationGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                                     individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                                    individualAim.isNearestToTodayDate(),individualAim.isNotificationShown(),true,individualAim.isPastDate());
+                                    individualAim.isNearestToTodayDate(),individualAim.isNotificationShown(),true,individualAim.isPastDate(),individualAim.isTaskDone());
 
                             GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                                 @Override
@@ -267,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements GoalAdapter.ItemC
 
                     final EachGoal alarmGoal = new EachGoal(individualAim.getGoalName(),individualAim.getOriginalDeadlineDate(),
                             individualAim.getVirtualDeadlineDate(),individualAim.isAllowVD(),individualAim.isVdCreatedForThisAim(),
-                            nearestToToday,individualAim.isNotificationShown(),individualAim.isNotificationAlarm(),pastDate);
+                            nearestToToday,individualAim.isNotificationShown(),individualAim.isNotificationAlarm(),pastDate,individualAim.isTaskDone());
 
                     GoalExecutor.getInstance().diskIO().execute(new Runnable() {
                         @Override

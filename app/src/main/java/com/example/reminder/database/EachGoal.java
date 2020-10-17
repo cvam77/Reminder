@@ -19,9 +19,11 @@ public class EachGoal
     private boolean notificationShown;
     private boolean notificationAlarm;
     private boolean pastDate;
+    private boolean taskDone;
+
 
     public EachGoal(int id, String goalName, Date originalDeadlineDate, Date virtualDeadlineDate, boolean allowVD,
-                    boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate) {
+                    boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate, boolean taskDone) {
         this.id = id;
         this.goalName = goalName;
         this.originalDeadlineDate = originalDeadlineDate;
@@ -32,11 +34,12 @@ public class EachGoal
         this.notificationShown = notificationShown;
         this.notificationAlarm = notificationAlarm;
         this.pastDate = pastDate;
+        this.taskDone = taskDone;
     }
 
     @Ignore
-    public EachGoal(String goalName, Date originalDeadlineDate, Date virtualDeadlineDate,
-                    boolean allowVD, boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate) {
+    public EachGoal(String goalName, Date originalDeadlineDate, Date virtualDeadlineDate, boolean allowVD,
+                    boolean vdCreatedForThisAim, boolean nearestToTodayDate, boolean notificationShown, boolean notificationAlarm, boolean pastDate, boolean taskDone) {
         this.goalName = goalName;
         this.originalDeadlineDate = originalDeadlineDate;
         this.virtualDeadlineDate = virtualDeadlineDate;
@@ -46,6 +49,7 @@ public class EachGoal
         this.notificationShown = notificationShown;
         this.notificationAlarm = notificationAlarm;
         this.pastDate = pastDate;
+        this.taskDone = taskDone;
     }
 
     public int getId() {
@@ -126,5 +130,13 @@ public class EachGoal
 
     public void setPastDate(boolean pastDate) {
         this.pastDate = pastDate;
+    }
+
+    public boolean isTaskDone() {
+        return taskDone;
+    }
+
+    public void setTaskDone(boolean taskDone) {
+        this.taskDone = taskDone;
     }
 }

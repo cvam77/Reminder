@@ -350,7 +350,7 @@ public class AddGoal extends AppCompatActivity implements DatePickerDialog.OnDat
 
 
         final EachGoal eachGoal = new EachGoal(eachGoalName,eachGoalOriginalDeadline,eachGoalVirtualDeadline,allowVD,
-                isVdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim, notificationAlarm,pastDate);
+                isVdCreatedForThisAim,isNearestToTodayDate,notificationShownForThisAim, notificationAlarm,pastDate,false);
 
         GoalExecutor.getInstance().diskIO().execute(new Runnable() {
             @Override
