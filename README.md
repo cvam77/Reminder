@@ -10,6 +10,8 @@ For some tasks where you don't want the deadline to be preponed, you can just tu
 
 Virtual Deadline app:
 
+- makes use of Viewmodel, Firebase Job Dispatcher, Room ORM etc.
+
 - lets you schedule your tasks and then without you even noticing, secretly creates a virtual deadline for each of your tasks. (Check out the app screenshots for more information)
 
 - Prepones the deadline by creating a virtual one for you when you are not using your phone. It just creates a suitable virtual deadline - neither too far nor too near the original deadline, just the perfect one.
@@ -32,11 +34,5 @@ Virtual Deadline app:
 ![7_600x800](https://user-images.githubusercontent.com/59323913/97796178-b8ac8080-1bdc-11eb-82ef-2ae019aa1f58.jpg)
 
 ![8](https://user-images.githubusercontent.com/59323913/97796181-bb0eda80-1bdc-11eb-9f85-db3c67dbe2cd.jpg)
-
-- uses Viewmodel, Firebase Job Dispatcher, Room ORM etc.
-
-
-
-
 
 
