@@ -1,5 +1,5 @@
 # To-Do-For-Procrastinators
-A Procrastinator's To-Do
+A Procrastinator's To-Do App
 
 This android app is meant to help people combat procrastinism. If you have a lot of time left to do a certain task but you don't want to leave it for until the last-minute, 
 you can schedule the to-do in the app and then let the app do the rest. If you forget the original deadline that's even better. This app will prepone the deadline 
