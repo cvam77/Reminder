@@ -14,6 +14,9 @@ Virtual Deadline app:
 
 - Prepones the deadline by creating a virtual one for you when you are not using your phone. It just creates a suitable virtual deadline - neither too far nor too near the original deadline, just the perfect one.
 
+![one](https://user-images.githubusercontent.com/59323913/97795998-1f309f00-1bdb-11eb-9ac3-7cced4000b88.png)
+
+
 - lets you know when less than a day is remaining for each task's virtual deadline to end and again lets you know when less than two hours are remaining. This way you are constantly motivated to get your tasks done much before the original deadline.
 
 - color-codes the tasks: grey is for past tasks, dark green is for upcoming tasks, and light green is for future tasks (please see the screenshots).
