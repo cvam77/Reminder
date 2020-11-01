@@ -8,9 +8,7 @@ remaining for virtual deadline of the task.
 
 For some tasks where you don't want the deadline to be preponed, you can just turn off the switch that says 'virtual deadline enabled'.
 
-![1](https://user-images.githubusercontent.com/59323913/97795884-bb59a680-1bd9-11eb-8e95-4e76c2e8e58f.png)
-
-![2](https://user-images.githubusercontent.com/59323913/97795888-be549700-1bd9-11eb-81c5-57c13b24c481.png)
+![1](https://user-images.githubusercontent.com/59323913/97795884-bb59a680-1bd9-11eb-8e95-4e76c2e8e58f.png) ![2](https://user-images.githubusercontent.com/59323913/97795888-be549700-1bd9-11eb-81c5-57c13b24c481.png)
 
 <img width="245" alt="3" src="https://user-images.githubusercontent.com/59323913/97795890-bf85c400-1bd9-11eb-848e-43a8ea84a72e.PNG">
 
