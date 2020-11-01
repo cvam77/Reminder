@@ -14,16 +14,29 @@ Virtual Deadline app:
 
 - Prepones the deadline by creating a virtual one for you when you are not using your phone. It just creates a suitable virtual deadline - neither too far nor too near the original deadline, just the perfect one.
 
-![one](https://user-images.githubusercontent.com/59323913/97795998-1f309f00-1bdb-11eb-9ac3-7cced4000b88.png)
+![1](https://user-images.githubusercontent.com/59323913/97796169-a9c5ce00-1bdc-11eb-8f3d-36cffa4dc1aa.png)
 
+![2](https://user-images.githubusercontent.com/59323913/97796170-aaf6fb00-1bdc-11eb-81ee-8c9782b4028b.png)
 
 - lets you know when less than a day is remaining for each task's virtual deadline to end and again lets you know when less than two hours are remaining. This way you are constantly motivated to get your tasks done much before the original deadline.
 
+<img width="400" alt="3" src="https://user-images.githubusercontent.com/59323913/97796171-adf1eb80-1bdc-11eb-8196-97a4eee0458c.png">
+
 - color-codes the tasks: grey is for past tasks, dark green is for upcoming tasks, and light green is for future tasks (please see the screenshots).
+
+![4](https://user-images.githubusercontent.com/59323913/97796172-b1857280-1bdc-11eb-9951-3360eb5d19c3.png)
 
 - does not create virtual deadlines for tasks when not needed. You just need to turn off the switch that says 'virtual deadline enabled' (please see the screenshots).
 
-- tries to be as battery-efficient as possible.
+
+![7_600x800](https://user-images.githubusercontent.com/59323913/97796178-b8ac8080-1bdc-11eb-82ef-2ae019aa1f58.jpg)
+
+![8](https://user-images.githubusercontent.com/59323913/97796181-bb0eda80-1bdc-11eb-9f85-db3c67dbe2cd.jpg)
+
+- uses Viewmodel, Firebase Job Dispatcher, Room ORM etc.
+
+
+
 
 
 
